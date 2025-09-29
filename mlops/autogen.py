@@ -15,14 +15,14 @@ bootstrap = [
   "sudo apt install curl",
   # https://nixos.org/download/#nix-install-linux
   "printf 'y\n\ny\n\ny\n\n' | sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon",
-  "source ~/.bashrc"
+  "source ~/.bashrc",
   # python tooling
   "nix-env -iA nixpkgs.uv",
   "nix-env -iA nixpkgs.ruff",
   "sudo chsh -s $(which zsh)",
 ]
 
-_system_deps    = ["fzf", "eza", "bat", "magic-wormhole", "tmux", "nvim", "git"]
+_system_deps    = ["fzf", "eza", "bat", "magic-wormhole", "tmux", "neovim", "git"]
 _dev_deps       = ["uv", "ruff", "pyright"]
 
 dependencies = [
