@@ -31,13 +31,15 @@ dependencies = [
 ]
 
 dotfiles = [
+  # zsh    
+  f"curl -o ~/.zshrc                        {DOTFILES_URL}/.zshrc_cuda"
   # tmux 
   "mkdir -p ~/.config/tmux",
   "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm",
-  f"curl -o ~/.config/tmux/tmux.conf {DOTFILES_URL}/tmux/tmux_remote.conf",
+  f"curl -o ~/.config/tmux/tmux.conf        {DOTFILES_URL}/tmux/tmux_remote.conf",
   # nvim
   "mkdir -p ~/.config/nvim",
-  f"curl -o ~/.config/nvim/init.lua {DOTFILES_URL}/nvim/init.lua",
+  f"curl -o ~/.config/nvim/init.lua         {DOTFILES_URL}/nvim/init.lua",
 ]
 
 
