@@ -32,7 +32,7 @@ dependencies = [
 
 dotfiles = [
   # zsh    
-  f"curl -o ~/.zshrc                        {DOTFILES_URL}/.zshrc_cuda"
+  f"curl -o ~/.zshrc                        {DOTFILES_URL}/.zshrc_cuda",
   # tmux 
   "mkdir -p ~/.config/tmux",
   "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm",
