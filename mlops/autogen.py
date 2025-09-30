@@ -13,6 +13,7 @@ bootstrap = [
   "sudo apt install xz-utils",
   "sudo apt install zsh",
   "sudo apt install curl",
+  "sudo apt install gcc"
   # https://nixos.org/download/#nix-install-linux
   "printf 'y\n\ny\n\ny\n\n' | sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon",
   "source ~/.bashrc",
@@ -42,7 +43,6 @@ dotfiles = [
 
 cuda = [
   f"sudo ubuntu-drivers install nvidia:{CUDA_DRIVER}",
-  # https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04&target_type=deb_local
   "wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin",
   "sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600",
   "wget https://developer.download.nvidia.com/compute/cuda/13.0.1/local_installers/cuda-repo-ubuntu2404-13-0-local_13.0.1-580.82.07-1_amd64.deb",
@@ -50,6 +50,10 @@ cuda = [
   "sudo cp /var/cuda-repo-ubuntu2404-13-0-local/cuda-*-keyring.gpg /usr/share/keyrings/",
   "sudo apt-get update",
   "sudo apt-get -y install cuda-toolkit-13-0",
+]
+
+extras = [
+  "sudo apt install python3.12-dev", # triton needs this sometimes
 ]
 
 def has_cuda():

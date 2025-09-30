@@ -3,7 +3,6 @@ import time
 import asyncio
 import asyncssh
 import os
-import ray
 import base64
 import signal
 import multiprocessing
@@ -480,19 +479,20 @@ async def ssh_copy(ssh_config: SSHConfig, local: Path, remote: str) -> None:
             await sftp.put(str(local), remote)
             print(f"[UPLOAD] {local} -> {remote} (via SFTP)")
 
-def setup_ray_tunnel(hostname="170.9.234.79", username="ubuntu", verbose=False):
-    # points to lambda cluster. suspected to be deprecated
-    _free_port = free_port()
-    ray_tunnel_config = SSHConfig(
-        hostname=hostname,
-        username=username,
-        private_key=base64.b64decode(os.environ['RAY_SSH_KEY']).decode('utf-8'),
-        private_key_passphrase=os.environ.get("PASSPHRASE"),
-        port_forwards=[
-            PortForward(_free_port,  'localhost', 10001),
-        ],
-    )
-    ray_tunnel = SSHTunnelProcess(ray_tunnel_config)
-    assert ray_tunnel.start()
-    ray.init(address=f"ray://localhost:{free_port}", log_to_driver=verbose)
-    return ray_tunnel
+#import ray
+#def setup_ray_tunnel(hostname="170.9.234.79", username="ubuntu", verbose=False):
+#    # points to lambda cluster. suspected to be deprecated
+#    _free_port = free_port()
+#    ray_tunnel_config = SSHConfig(
+#        hostname=hostname,
+#        username=username,
+#        private_key=base64.b64decode(os.environ['RAY_SSH_KEY']).decode('utf-8'),
+#        private_key_passphrase=os.environ.get("PASSPHRASE"),
+#        port_forwards=[
+#            PortForward(_free_port,  'localhost', 10001),
+#        ],
+#    )
+#    ray_tunnel = SSHTunnelProcess(ray_tunnel_config)
+#    assert ray_tunnel.start()
+#    ray.init(address=f"ray://localhost:{free_port}", log_to_driver=verbose)
+#    return ray_tunnel
