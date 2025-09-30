@@ -33,7 +33,7 @@ dotfiles = [
   # tmux 
   "mkdir -p ~/.config/tmux",
   "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm",
-  f"curl -o ~/.config/tmux/tmux.conf {DOTFILES_URL}/tmux/tmux.conf",
+  f"curl -o ~/.config/tmux/tmux.conf {DOTFILES_URL}/tmux/tmux_remote.conf",
   # nvim
   "mkdir -p ~/.config/nvim",
   f"curl -o ~/.config/nvim/init.lua {DOTFILES_URL}/nvim/init.lua",
